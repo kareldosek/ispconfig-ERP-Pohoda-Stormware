@@ -4,6 +4,10 @@
  * Funkce: Kontroluje výročí registrace (14 dní před) a generuje unikátní XML pro Pohodu.
  */
 
+// Kontrola přítopnosti PHP SOAP modulu v systému
+if (!extension_loaded('soap')) {
+    die("Chyba: PHP modul SOAP není aktivní. Pro opravu použij: sudo apt install php-soap\n");
+}
 // --- KONFIGURACE ---
 $username = 'remote_user_v_ispconfigu';
 $password = 'tve_silne_heslo';
@@ -110,4 +114,5 @@ function generatePohodaXML($data, $moje_ico, $cena, $dir) {
 
     // Uložení souboru
     $xml->asXML($dir . "/" . $filename);
+
 }
